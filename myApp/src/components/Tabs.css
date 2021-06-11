@@ -1,0 +1,28 @@
+/* TODO :暂时在此处添加全局样式 */
+
+ion-content {
+  --padding-start: 10px;
+}
+
+.Tab {
+  padding: 10px 0;
+}
+.header {
+  display: flex;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+  line-height: 3;
+  width: 100%;
+}
+
+.header > div {
+  padding: 0 8px;
+  min-width: 15%;
+}
+
+.header > .active {
+  border-bottom: 1px solid #1890ff;
+}
+.content {
+  padding: 5%;
+}

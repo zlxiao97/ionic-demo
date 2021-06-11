@@ -5,8 +5,58 @@ import {
   IonTitle,
   IonToolbar,
   IonButtons,
-  IonBackButton
+  IonBackButton,
+  IonGrid,
+  IonRow,
+  IonCol,
 } from "@ionic/react";
+import Tabs from "../components/Tabs";
+import IframeView from "../components/IframeView";
+
+const { TabPane } = Tabs;
+
+const OVERALL_SCALE_IFRAME = [
+  {
+    title: "本科毕业生",
+    sorce:
+      "https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=27&standalone=1",
+  },
+  {
+    title: "毕业研究生",
+    source:
+      "https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=23&standalone=1",
+  },
+  {
+    title: "总毕业生",
+    source:
+      "https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=24&standalone=1",
+  },
+];
+
+function OverallScale() {
+  return (
+    <IonGrid>
+      <h4>总体规模</h4>
+      <IonRow>
+        {OVERALL_SCALE_IFRAME.map(iframe => (
+          <IonCol size="4" key={iframe.title}>
+            {iframe.title}
+            <br />
+            <iframe
+              seamless
+              frameBorder="0"
+              scrolling="no"
+              height="50"
+              width="100%"
+              title={iframe.title}
+              src={iframe.source}
+            ></iframe>
+          </IonCol>
+        ))}
+      </IonRow>
+    </IonGrid>
+  );
+}
 
 function Scale() {
   return (
@@ -20,60 +70,31 @@ function Scale() {
         </IonToolbar>
       </IonHeader>
       <IonContent scrollX={true}>
-        <h3>本科毕业生院系结构</h3>
-        <iframe
-          width="600"
-          height="400"
-          seamless
-          frameBorder="0"
-          scrolling="no"
-          src="https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=15&standalone=1&height=400"
-        ></iframe>
-        <h3>毕业研究生院系结构</h3>
-        <iframe
-          width="600"
-          height="400"
-          seamless
-          frameBorder="0"
-          scrolling="no"
-          src="https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=17&standalone=1&height=400"
-        ></iframe>
-        <h3>总体毕业生院系结构</h3>
-        <iframe
-          width="600"
-          height="400"
-          seamless
-          frameBorder="0"
-          scrolling="no"
-          src="https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=18&standalone=1&height=400"
-        ></iframe>
-        <h3>本科毕业生生源地结构</h3>
-        <iframe
-          width="600"
-          height="400"
-          seamless
-          frameBorder="0"
-          scrolling="no"
-          src="https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=19&standalone=1&height=400"
-        ></iframe>
-        <h3>毕业研究生生源地结构</h3>
-        <iframe
-          width="600"
-          height="400"
-          seamless
-          frameBorder="0"
-          scrolling="no"
-          src="https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=20&standalone=1&height=400"
-        ></iframe>
-        <h3>总体毕业生生源地结构</h3>
-        <iframe
-          width="600"
-          height="400"
-          seamless
-          frameBorder="0"
-          scrolling="no"
-          src="https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=21&standalone=1&height=400"
-        ></iframe>
+        <OverallScale />
+        <h1>院系结构</h1>
+        <Tabs>
+          <TabPane key="1" tab="本科毕业生">
+            <IframeView id="2" noTitle={true}></IframeView>
+          </TabPane>
+          <TabPane key="2" tab="毕业研究生">
+            <IframeView id="1" noTitle={true}></IframeView>
+          </TabPane>
+          <TabPane key="3" tab="总体">
+            <IframeView id="0" noTitle={true}></IframeView>
+          </TabPane>
+        </Tabs>
+        <h1>生源地结构</h1>
+        <Tabs>
+          <TabPane key="1" tab="本科毕业生">
+            <IframeView id="5" noTitle={true}></IframeView>
+          </TabPane>
+          <TabPane key="2" tab="毕业研究生">
+            <IframeView id="4" noTitle={true}></IframeView>
+          </TabPane>
+          <TabPane key="3" tab="总体">
+            <IframeView id="3" noTitle={true}></IframeView>
+          </TabPane>
+        </Tabs>
       </IonContent>
     </IonPage>
   );

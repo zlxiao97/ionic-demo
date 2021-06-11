@@ -8,7 +8,7 @@ import {
   IonLabel,
   IonIcon,
   IonItemGroup,
-  IonItemDivider
+  IonItemDivider,
 } from "@ionic/react";
 import {
   peopleSharp,
@@ -17,7 +17,7 @@ import {
   bagSharp,
   walletSharp,
   accessibilitySharp,
-  trendingUpSharp
+  trendingUpSharp,
 } from "ionicons/icons";
 import "./Menu.css";
 
@@ -42,13 +42,13 @@ const Menu = () => {
               <h3>毕业生规模结构</h3>
             </IonLabel>
           </IonItem>
-          <IonItem>
+          <IonItem routerLink={"/employment"} detail={false} className="link">
             <IonIcon icon={pulseSharp} slot="start"></IonIcon>
             <IonLabel>
               <h3>毕业生就业率</h3>
             </IonLabel>
           </IonItem>
-          <IonItem>
+          <IonItem routerLink={"/province"} detail={false} className="link">
             <IonIcon icon={airplaneSharp} slot="start"></IonIcon>
             <IonLabel>
               <h3>毕业生就业流向</h3>
@@ -61,19 +61,19 @@ const Menu = () => {
               <h3>就业相关分析</h3>
             </IonLabel>
           </IonItemDivider>
-          <IonItem>
+          <IonItem routerLink={"/jobChannel"} detail={false} className="link">
             <IonIcon icon={bagSharp} slot="start"></IonIcon>
             <IonLabel>
               <h3>求职情况</h3>
             </IonLabel>
           </IonItem>
-          <IonItem>
+          <IonItem routerLink={"/salaryLevel"} detail={false} className="link">
             <IonIcon icon={walletSharp} slot="start"></IonIcon>
             <IonLabel>
               <h3>薪酬水平</h3>
             </IonLabel>
           </IonItem>
-          <IonItem>
+          <IonItem routerLink={"/literacy"} detail={false} className="link">
             <IonIcon icon={accessibilitySharp} slot="start"></IonIcon>
             <IonLabel>
               <h3>毕业生素养评估</h3>
@@ -86,7 +86,7 @@ const Menu = () => {
               <h3>就业发展趋势分析</h3>
             </IonLabel>
           </IonItemDivider>
-          <IonItem>
+          <IonItem routerLink={"/trend"} detail={false} className="link">
             <IonIcon icon={trendingUpSharp} slot="start"></IonIcon>
             <IonLabel>
               <h3>就业发展趋势分析</h3>
