@@ -1,0 +1,72 @@
+# 创建命名空间
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: graduates-employment-reports-web-client  # 项目空间名称
+  labels:
+    name: graduates-employment-reports-web-client  # 标签
+---
+# 部署工作负载
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-web-client # 负载名称
+  namespace: graduates-employment-reports-web-client  # 所在namespace
+spec: 
+  selector: 
+    matchLabels:
+      workloadselector: deployment-graduates-employment-reports-web-client  # 选择器 选择标签
+  replicas: 1  # pod 数量
+  template:
+    metadata:
+      labels:
+        workloadselector: deployment-graduates-employment-reports-web-client  # 标签
+    spec:
+      containers:
+      - name: web-client  # 容器名称
+        image: harbor.dev.wh.digitalchina.com/graduates-employment-reports/web-client:build-$BUILD_NUMBER  # 镜像
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80  # 端口号
+          name: app  # 名称
+          protocol: TCP  # 协议
+      imagePullSecrets:
+        - name: harbor-xiaozlb-b7ymq
+      dnsPolicy: ClusterFirst  # dRancherNamespace规则
+---
+# 创建Service
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    cattle.io/creator: norman
+  name: service-web-client  # service名称
+  namespace: graduates-employment-reports-web-client
+spec:
+  ports:
+  - port: 80         
+    protocol: TCP
+    targetPort: 80
+  selector:
+    workloadselector: deployment-graduates-employment-reports-web-client
+  type: ClusterIP
+---
+# 创建ingress
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-web-client  # ingress名称
+  namespace: graduates-employment-reports-web-client  # 命名空间
+spec:
+  rules:
+  - host: graduates-employment-reports-web-client.dev.wh.digitalchina.com  #设置访问地址
+    http:
+      paths:
+      - backend:
+          serviceName: service-web-client  # 服务名称
+          servicePort: 80  # 访问端口
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - graduates-employment-reports-web-client.dev.wh.digitalchina.com
+    secretName: whdc-cert
