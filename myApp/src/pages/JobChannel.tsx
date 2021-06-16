@@ -20,8 +20,8 @@ function JobChannel() {
       </IonHeader>
 
       <IonContent scrollX={true}>
-        <IframeView id="6" />
-        <IframeView id="7" />
+        <IframeView id="11" />
+        <IframeView id="12" />
       </IonContent>
     </IonPage>
   );

@@ -23,6 +23,3 @@ ion-content {
 .header > .active {
   border-bottom: 1px solid #1890ff;
 }
-.content {
-  padding: 5%;
-}

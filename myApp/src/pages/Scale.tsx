@@ -18,18 +18,18 @@ const { TabPane } = Tabs;
 const OVERALL_SCALE_IFRAME = [
   {
     title: "本科毕业生",
-    sorce:
-      "https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=27&standalone=1",
+    source:
+      "https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=16&standalone=1&&height=400",
   },
   {
     title: "毕业研究生",
     source:
-      "https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=23&standalone=1",
+      "https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=1&standalone=1&&height=400",
   },
   {
     title: "总毕业生",
     source:
-      "https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=24&standalone=1",
+      "https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=2&standalone=1&&height=400",
   },
 ];
 
@@ -46,8 +46,8 @@ function OverallScale() {
               seamless
               frameBorder="0"
               scrolling="no"
-              height="50"
-              width="100%"
+              height="120"
+              width="100"
               title={iframe.title}
               src={iframe.source}
             ></iframe>
@@ -71,16 +71,25 @@ function Scale() {
       </IonHeader>
       <IonContent scrollX={true}>
         <OverallScale />
+        <h1>性别比例</h1>
+        <Tabs>
+          <TabPane key="1" tab="本科毕业生">
+            <IframeView id="0" noTitle={true}></IframeView>
+          </TabPane>
+          <TabPane key="2" tab="毕业研究生">
+            <IframeView id="1" noTitle={true}></IframeView>
+          </TabPane>
+        </Tabs>
         <h1>院系结构</h1>
         <Tabs>
           <TabPane key="1" tab="本科毕业生">
             <IframeView id="2" noTitle={true}></IframeView>
           </TabPane>
           <TabPane key="2" tab="毕业研究生">
-            <IframeView id="1" noTitle={true}></IframeView>
+            <IframeView id="3" noTitle={true}></IframeView>
           </TabPane>
           <TabPane key="3" tab="总体">
-            <IframeView id="0" noTitle={true}></IframeView>
+            <IframeView id="4" noTitle={true}></IframeView>
           </TabPane>
         </Tabs>
         <h1>生源地结构</h1>
@@ -89,10 +98,10 @@ function Scale() {
             <IframeView id="5" noTitle={true}></IframeView>
           </TabPane>
           <TabPane key="2" tab="毕业研究生">
-            <IframeView id="4" noTitle={true}></IframeView>
+            <IframeView id="6" noTitle={true}></IframeView>
           </TabPane>
           <TabPane key="3" tab="总体">
-            <IframeView id="3" noTitle={true}></IframeView>
+            <IframeView id="7" noTitle={true}></IframeView>
           </TabPane>
         </Tabs>
       </IonContent>

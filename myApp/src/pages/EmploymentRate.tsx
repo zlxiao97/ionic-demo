@@ -20,8 +20,8 @@ function EmploymentRate() {
       </IonHeader>
 
       <IonContent scrollX={true}>
-        <IframeView id="6" height={200} />
-        <IframeView id="7" />
+        <IframeView id="8" />
+        <IframeView id="9" />
       </IonContent>
     </IonPage>
   );

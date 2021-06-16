@@ -1,15 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChartItem, getChart } from "../data/charts";
-import { useIonViewWillEnter } from "@ionic/react";
 import "./IframeView.css";
 
 function IframeView(props: { id: string; height?: number; noTitle?: boolean }) {
   const [chart, setChart] = useState<ChartItem>();
 
-  useIonViewWillEnter(() => {
+  useEffect(() => {
     const crt = getChart(parseInt(props.id, 10));
     setChart(crt);
-  });
+  }, [props.id]);
 
   return (
     <>
@@ -18,7 +17,7 @@ function IframeView(props: { id: string; height?: number; noTitle?: boolean }) {
           {!props.noTitle && <h1>{chart.chartName}</h1>}
           <iframe
             width="100%"
-            height={props.height || 300}
+            height={props.height || 240}
             title={chart.chartName}
             seamless
             frameBorder="0"
