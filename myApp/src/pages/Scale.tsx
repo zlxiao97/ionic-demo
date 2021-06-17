@@ -9,48 +9,74 @@ import {
   IonGrid,
   IonRow,
   IonCol,
+  IonCard,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardContent
 } from "@ionic/react";
+import { useEffect } from "react";
 import Tabs from "../components/Tabs";
 import IframeView from "../components/IframeView";
+import "./Scale.css";
 
 const { TabPane } = Tabs;
 
 const OVERALL_SCALE_IFRAME = [
   {
+    id: "no1",
     title: "本科毕业生",
     source:
-      "https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=16&standalone=1&&height=400",
+      "https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=50&standalone=1&&height=100"
   },
   {
+    id: "no2",
     title: "毕业研究生",
     source:
-      "https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=1&standalone=1&&height=400",
+      "https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=51&standalone=1&&height=100"
   },
   {
+    id: "no3",
     title: "总毕业生",
     source:
-      "https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=2&standalone=1&&height=400",
-  },
+      "https://graduates-employment-reports-odoo-superset.dev.wh.digitalchina.com/superset/explore/?r=52&standalone=1&&height=100"
+  }
 ];
 
 function OverallScale() {
+  useEffect(() => {
+    window.no1.addEventListener("load", (ev) => {
+      const new_style_element = document.createElement("style");
+      new_style_element.textContent = ".header-line { color: white; }";
+      const iframeDoc = ev.target.contentDocument;
+      if (iframeDoc) iframeDoc.head.appendChild(new_style_element);
+    });
+  }, []);
   return (
     <IonGrid>
       <h4>总体规模</h4>
-      <IonRow>
-        {OVERALL_SCALE_IFRAME.map(iframe => (
-          <IonCol size="4" key={iframe.title}>
-            {iframe.title}
-            <br />
-            <iframe
-              seamless
-              frameBorder="0"
-              scrolling="no"
-              height="120"
-              width="100"
-              title={iframe.title}
-              src={iframe.source}
-            ></iframe>
+      <IonRow className="space-between">
+        {OVERALL_SCALE_IFRAME.map((iframe) => (
+          <IonCol size="3" key={iframe.title} className="pd-0">
+            <IonCard className="statistic">
+              <IonCardHeader className="statistic-header">
+                <IonCardSubtitle className="statistic-subtitle">
+                  {iframe.title}
+                </IonCardSubtitle>
+              </IonCardHeader>
+              <IonCardContent className="number-iframe">
+                <iframe
+                  className="statistic-iframe"
+                  seamless
+                  frameBorder="0"
+                  scrolling="no"
+                  height="50"
+                  width="100%"
+                  title={iframe.title}
+                  src={iframe.source}
+                  id={iframe.id}
+                ></iframe>
+              </IonCardContent>
+            </IonCard>
           </IonCol>
         ))}
       </IonRow>

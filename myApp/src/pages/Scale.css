@@ -1,0 +1,32 @@
+.pd-0 {
+  padding: 0;
+}
+.number-iframe {
+  padding: 0;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.statistic {
+  margin: 0;
+  background-image: url("../assets/cardBg.png");
+  background-size: 100% 100%;
+}
+
+.statistic-subtitle {
+  font-size: 12px !important;
+  font-weight: lighter;
+  color: rgb(255, 255, 255, 0.9);
+}
+
+.statistic-header {
+  padding: 12% 0 0 6%;
+}
+
+.statistic-iframe {
+  margin-top: -10px;
+  padding-left: 6%;
+  box-sizing: border-box;
+}
