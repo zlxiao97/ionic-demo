@@ -2,7 +2,6 @@ import { IonApp, IonRouterOutlet } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { Route, Redirect } from "react-router-dom";
 import Menu from "./components/Menu";
-import Home from "./pages/Home";
 import Scale from "./pages/Scale";
 import EmploymentRate from "./pages/EmploymentRate";
 import Province from "./pages/Province";
@@ -36,8 +35,7 @@ const App: React.FC = () => {
       <Menu />
       <IonReactRouter>
         <IonRouterOutlet>
-          <Route path="/home" component={Home} exact={true} />
-          <Route exact path="/" render={() => <Redirect to="/home" />} />
+          <Route exact path="/" render={() => <Redirect to="/scale" />} />
           <Route exact path="/scale" render={() => <Scale />} />
           <Route exact path="/employment" render={() => <EmploymentRate />} />
           <Route exact path="/province" render={() => <Province />} />

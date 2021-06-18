@@ -1,6 +1,35 @@
+.container {
+  padding-left: 0;
+  padding-right: 10px;
+  margin: 0;
+}
+
+.flat-card{
+  margin: 0;
+  margin-right: 10px;
+}
+
+.last-card{
+  margin-bottom: 15%;
+}
+
+.flat-card ion-card-content{
+  padding: 10px 5px 0 5px;
+}
+
+.title {
+  display: block;
+  font-size: 18px;
+  font-weight: bolder;
+  color: rgb(49, 66, 125);
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
 .pd-0 {
   padding: 0;
 }
+
 .number-iframe {
   padding: 0;
 }
@@ -11,14 +40,13 @@
 
 .statistic {
   margin: 0;
-  background-image: url("../assets/cardBg.png");
   background-size: 100% 100%;
 }
 
 .statistic-subtitle {
   font-size: 12px !important;
   font-weight: lighter;
-  color: rgb(255, 255, 255, 0.9);
+  color: rgb(0, 0, 0, 0.9);
 }
 
 .statistic-header {
@@ -29,4 +57,9 @@
   margin-top: -10px;
   padding-left: 6%;
   box-sizing: border-box;
+}
+
+.Tab {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }

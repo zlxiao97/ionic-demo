@@ -1,12 +1,19 @@
 import {
-  IonBackButton,
+  IonMenuButton,
   IonButtons,
   IonContent,
   IonHeader,
   IonPage,
   IonToolbar,
+  IonTitle,
+  IonCard,
+  IonText,
+  IonCardContent
 } from "@ionic/react";
+import Tabs from "../components/Tabs";
 import IframeView from "../components/IframeView";
+
+const { TabPane } = Tabs;
 
 function EmploymentRate() {
   return (
@@ -14,14 +21,25 @@ function EmploymentRate() {
       <IonHeader translucent>
         <IonToolbar>
           <IonButtons>
-            <IonBackButton text="返回" defaultHref="/home"></IonBackButton>
+            <IonMenuButton auto-hide={false} menu="menu"></IonMenuButton>
           </IonButtons>
+          <IonTitle>毕业生就业率</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent scrollX={true}>
-        <IframeView id="8" />
-        <IframeView id="9" />
+        <IonText className="title">本科毕业生就业构成情况</IonText>
+        <IonCard className="flat-card">
+          <IonCardContent>
+            <IframeView id="8" noTitle={true}></IframeView>
+          </IonCardContent>
+        </IonCard>
+        <IonText className="title">毕业研究生就业构成情况</IonText>
+        <IonCard className="flat-card">
+          <IonCardContent>
+            <IframeView id="9" noTitle={true}></IframeView>
+          </IonCardContent>
+        </IonCard>
       </IonContent>
     </IonPage>
   );

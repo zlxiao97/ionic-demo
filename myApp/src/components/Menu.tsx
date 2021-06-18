@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   IonMenu,
   IonHeader,
@@ -8,7 +9,7 @@ import {
   IonLabel,
   IonIcon,
   IonItemGroup,
-  IonItemDivider,
+  IonItemDivider
 } from "@ionic/react";
 import {
   peopleSharp,
@@ -17,7 +18,7 @@ import {
   bagSharp,
   walletSharp,
   accessibilitySharp,
-  trendingUpSharp,
+  trendingUpSharp
 } from "ionicons/icons";
 import "./Menu.css";
 
