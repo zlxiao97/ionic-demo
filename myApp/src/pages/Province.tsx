@@ -8,10 +8,12 @@ import {
   IonToolbar,
   IonText,
   IonCard,
-  IonCardContent
+  IonCardContent,
 } from "@ionic/react";
 import IframeView from "../components/IframeView";
 import Tabs from "../components/Tabs";
+import ChinaMap from "../components/ChinaMap";
+import area_flow from "../data/area_flow";
 
 function Province() {
   return (
@@ -30,13 +32,31 @@ function Province() {
           <IonCardContent>
             <Tabs>
               <Tabs.TabPane tab="本科毕业生" key="1">
-                <IframeView noTitle={true} id="8"></IframeView>
+                <ChinaMap
+                  data={area_flow.map(item => ({
+                    name: item.province,
+                    value: item.bachelor_count,
+                    rate: item.bachelor_rate,
+                  }))}
+                />
               </Tabs.TabPane>
               <Tabs.TabPane tab="毕业研究生" key="2">
-                <IframeView noTitle={true} id="8"></IframeView>
+                <ChinaMap
+                  data={area_flow.map(item => ({
+                    name: item.province,
+                    value: item.master_count,
+                    rate: item.master_rate,
+                  }))}
+                />
               </Tabs.TabPane>
               <Tabs.TabPane tab="总体" key="3">
-                <IframeView noTitle={true} id="8"></IframeView>
+                <ChinaMap
+                  data={area_flow.map(item => ({
+                    name: item.province,
+                    value: item.total_count,
+                    rate: item.total_rate,
+                  }))}
+                />
               </Tabs.TabPane>
             </Tabs>
           </IonCardContent>
