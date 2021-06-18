@@ -5,7 +5,7 @@ export interface ChartItem {
   id: number;
 }
 
-const HEIGHT_RATE = 1.5;
+const HEIGHT_RATE = 1;
 
 const CHART_HEIGHT = 300 * HEIGHT_RATE;
 

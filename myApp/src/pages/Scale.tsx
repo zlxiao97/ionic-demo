@@ -22,7 +22,7 @@ import "./Scale.css";
 
 const { TabPane } = Tabs;
 
-const HEIGHT_RATE = 1.5;
+const HEIGHT_RATE = 1;
 
 const NUMBER_HEIGHT = 120 * HEIGHT_RATE;
 
