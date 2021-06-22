@@ -9,7 +9,8 @@ import {
   IonLabel,
   IonIcon,
   IonItemGroup,
-  IonItemDivider
+  IonItemDivider,
+
 } from "@ionic/react";
 import {
   peopleSharp,
@@ -20,16 +21,12 @@ import {
   accessibilitySharp,
   trendingUpSharp
 } from "ionicons/icons";
+
 import "./Menu.css";
 
 const Menu = () => {
   return (
     <IonMenu side="start" content-id="app" menu-id="menu">
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>菜单</IonTitle>
-        </IonToolbar>
-      </IonHeader>
       <IonContent>
         <IonItemGroup>
           <IonItemDivider>

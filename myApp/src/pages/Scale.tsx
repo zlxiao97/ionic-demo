@@ -1,11 +1,4 @@
 import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonButtons,
-  IonMenuButton,
   IonGrid,
   IonRow,
   IonCol,
@@ -17,6 +10,7 @@ import {
 } from "@ionic/react";
 // import { useEffect } from "react";
 import Tabs from "../components/Tabs";
+import PageContainer from "../components/PageContainer";
 import IframeView from "../components/IframeView";
 import "./Scale.css";
 
@@ -91,66 +85,60 @@ function OverallScale() {
 
 function Scale() {
   return (
-    <IonPage className="scale-page" id="scale-page">
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons>
-            <IonMenuButton auto-hide={false} menu="menu"></IonMenuButton>
-          </IonButtons>
-          <IonTitle>毕业生规模结构</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent scrollX={true} className="content">
-        <OverallScale />
-        <IonText className="title">性别比例</IonText>
-        <IonCard className="flat-card">
-          <IonCardContent>
-            <Tabs>
-              <TabPane key="1" tab="本科毕业生">
-                <IframeView id="0" noTitle={true}></IframeView>
-              </TabPane>
-              <TabPane key="2" tab="毕业研究生">
-                <IframeView id="1" noTitle={true}></IframeView>
-              </TabPane>
-            </Tabs>
-          </IonCardContent>
-        </IonCard>
+    <PageContainer
+      title="毕业生规模结构"
+      className="scale-page"
+      pageId="scale-page"
+    >
+      <OverallScale />
+      <IonText className="title">性别比例</IonText>
+      <IonCard className="flat-card">
+        <IonCardContent>
+          <Tabs>
+            <TabPane key="1" tab="本科毕业生">
+              <IframeView id="0" noTitle={true}></IframeView>
+            </TabPane>
+            <TabPane key="2" tab="毕业研究生">
+              <IframeView id="1" noTitle={true}></IframeView>
+            </TabPane>
+          </Tabs>
+        </IonCardContent>
+      </IonCard>
 
-        <IonText className="title">院系结构</IonText>
-        <IonCard className="flat-card">
-          <IonCardContent>
-            <Tabs>
-              <TabPane key="1" tab="本科毕业生">
-                <IframeView id="2" noTitle={true} height={300}></IframeView>
-              </TabPane>
-              <TabPane key="2" tab="毕业研究生">
-                <IframeView id="3" noTitle={true} height={300}></IframeView>
-              </TabPane>
-              <TabPane key="3" tab="总体">
-                <IframeView id="4" noTitle={true} height={300}></IframeView>
-              </TabPane>
-            </Tabs>
-          </IonCardContent>
-        </IonCard>
+      <IonText className="title">院系结构</IonText>
+      <IonCard className="flat-card">
+        <IonCardContent>
+          <Tabs>
+            <TabPane key="1" tab="本科毕业生">
+              <IframeView id="2" noTitle={true} height={300}></IframeView>
+            </TabPane>
+            <TabPane key="2" tab="毕业研究生">
+              <IframeView id="3" noTitle={true} height={300}></IframeView>
+            </TabPane>
+            <TabPane key="3" tab="总体">
+              <IframeView id="4" noTitle={true} height={300}></IframeView>
+            </TabPane>
+          </Tabs>
+        </IonCardContent>
+      </IonCard>
 
-        <IonText className="title">生源地结构</IonText>
-        <IonCard className="flat-card last-card">
-          <IonCardContent>
-            <Tabs>
-              <TabPane key="1" tab="本科毕业生">
-                <IframeView id="5" noTitle={true} height={300}></IframeView>
-              </TabPane>
-              <TabPane key="2" tab="毕业研究生">
-                <IframeView id="6" noTitle={true} height={300}></IframeView>
-              </TabPane>
-              <TabPane key="3" tab="总体">
-                <IframeView id="7" noTitle={true} height={300}></IframeView>
-              </TabPane>
-            </Tabs>
-          </IonCardContent>
-        </IonCard>
-      </IonContent>
-    </IonPage>
+      <IonText className="title">生源地结构</IonText>
+      <IonCard className="flat-card last-card">
+        <IonCardContent>
+          <Tabs>
+            <TabPane key="1" tab="本科毕业生">
+              <IframeView id="5" noTitle={true} height={300}></IframeView>
+            </TabPane>
+            <TabPane key="2" tab="毕业研究生">
+              <IframeView id="6" noTitle={true} height={300}></IframeView>
+            </TabPane>
+            <TabPane key="3" tab="总体">
+              <IframeView id="7" noTitle={true} height={300}></IframeView>
+            </TabPane>
+          </Tabs>
+        </IonCardContent>
+      </IonCard>
+    </PageContainer>
   );
 }
 
